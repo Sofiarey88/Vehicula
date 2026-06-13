@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// Controls a four-wheel vehicle using Unity Wheel Colliders.
+/// Pressing the reverse input while moving forward applies brakes.
+/// Pressing the reverse input while stopped or reversing applies reverse torque.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public sealed class WheelVehicleController : MonoBehaviour
@@ -55,9 +57,12 @@ public sealed class WheelVehicleController : MonoBehaviour
     [Tooltip("Brake torque applied while braking.")]
     private float brakeTorque = 2500f;
 
+    [SerializeField]
+    [Tooltip("Forward speed (m/s) below which the reverse input switches from braking to reversing.")]
+    private float brakeSpeedThreshold = 0.5f;
+
     private Rigidbody _rigidbody;
     private Vector2 _movementInput;
-    private bool _isBraking;
 
     private void Awake()
     {
@@ -80,16 +85,43 @@ public sealed class WheelVehicleController : MonoBehaviour
         _movementInput = context.ReadValue<Vector2>();
     }
 
-    public void RespondToBrakeInput(InputAction.CallbackContext context)
-    {
-        _isBraking = context.ReadValueAsButton();
-    }
-
     private void ApplyWheelForces()
     {
         float steeringAngle = _movementInput.x * maximumSteeringAngle;
-        float currentMotorTorque = _movementInput.y * motorTorque;
-        float currentBrakeTorque = _isBraking ? brakeTorque : 0f;
+
+        // Speed along the vehicle's local forward axis (positive = forward, negative = reversing)
+        float forwardSpeed = Vector3.Dot(_rigidbody.linearVelocity, transform.forward);
+
+        float currentMotorTorque;
+        float currentBrakeTorque;
+
+        if (_movementInput.y > 0f)
+        {
+            // Accelerating forward
+            currentMotorTorque = _movementInput.y * motorTorque;
+            currentBrakeTorque = 0f;
+        }
+        else if (_movementInput.y < 0f)
+        {
+            if (forwardSpeed > brakeSpeedThreshold)
+            {
+                // Still moving forward: apply brakes
+                currentMotorTorque = 0f;
+                currentBrakeTorque = brakeTorque;
+            }
+            else
+            {
+                // Stopped or already reversing: apply reverse torque
+                currentMotorTorque = _movementInput.y * motorTorque;
+                currentBrakeTorque = 0f;
+            }
+        }
+        else
+        {
+            // No vertical input: coast freely
+            currentMotorTorque = 0f;
+            currentBrakeTorque = 0f;
+        }
 
         foreach (WheelConfiguration wheelConfiguration in wheelConfigurations)
         {
