@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5030808161492152969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 286202645088684159, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286202645088684159, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286202645088684159, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 286202645088684159, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286202645088684159, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188470750363668783, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188470750363668783, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: brakeTorque
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188470750363668783, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: motorTorque
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149321875205479812, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521269254617527041, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521269254617527041, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3511293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071071
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987034469424726687, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_Name
+      value: CarAI Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7987034469424726687, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350277666490107762}
+  m_SourcePrefab: {fileID: 100100000, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+--- !u!1 &3100342235283894294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7987034469424726687, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+  m_PrefabInstance: {fileID: 5030808161492152969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &350277666490107762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100342235283894294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84127de94d31ca044aba8de13fadfc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RivalCarAI
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 20
+  turnSpeed: 5
+  waypointDistance: 5
