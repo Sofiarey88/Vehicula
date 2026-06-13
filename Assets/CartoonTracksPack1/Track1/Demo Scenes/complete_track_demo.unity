@@ -330,6 +330,14 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3521269254617527041, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521269254617527041, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5078741815301761897, guid: 4ba1040abb6d5384b8787c20ca0ac303, type: 3}
       propertyPath: m_LocalPosition.x
       value: 85.45834
