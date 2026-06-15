@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +17,17 @@ public sealed class RaceManager : MonoBehaviour
 
     private readonly List<CarRaceProgress> _registeredCars = new();
     private readonly List<CarRaceProgress> _sortedPositions = new();
+    private bool _raceFinished = false;
 
     public int TotalLaps => totalLaps;
     public int WaypointCount => waypoints != null ? waypoints.Length : 0;
+    public int RegisteredCarCount => _registeredCars.Count;
+
+    /// <summary>
+    /// Se dispara UNA SOLA VEZ cuando el primer coche completa todas las vueltas.
+    /// El parámetro es el coche que terminó primero.
+    /// </summary>
+    public event Action<CarRaceProgress> OnRaceFinished;
 
     private void Awake()
     {
@@ -30,7 +39,6 @@ public sealed class RaceManager : MonoBehaviour
 
         Instance = this;
 
-        // Asigna el índice a cada waypoint según su posición en el array
         for (int i = 0; i < waypoints.Length; i++)
         {
             if (waypoints[i] != null)
@@ -43,9 +51,6 @@ public sealed class RaceManager : MonoBehaviour
         UpdateRacePositions();
     }
 
-    /// <summary>
-    /// Llamado por CarRaceProgress.Start() para unirse a la carrera.
-    /// </summary>
     public void RegisterCar(CarRaceProgress car)
     {
         if (_registeredCars.Contains(car))
@@ -55,25 +60,21 @@ public sealed class RaceManager : MonoBehaviour
         _sortedPositions.Add(car);
     }
 
-    /// <summary>Retorna el waypoint en el índice indicado (circular).</summary>
     public RacingWaypoint GetWaypoint(int index)
         => waypoints[index % waypoints.Length];
 
-    /// <summary>Retorna el waypoint inmediatamente después del índice dado (circular).</summary>
     public RacingWaypoint GetNextWaypoint(int currentIndex)
         => waypoints[(currentIndex + 1) % waypoints.Length];
 
-    /// <summary>
-    /// Llamado por CarRaceProgress cada vez que un auto completa una vuelta.
-    /// </summary>
     public void OnCarCompletedLap(CarRaceProgress car)
     {
         Debug.Log($"[Carrera] {car.gameObject.name} — Vuelta {car.LapsCompleted}/{totalLaps} | Posición: {car.RacePosition}");
 
-        if (car.LapsCompleted >= totalLaps)
+        if (car.LapsCompleted >= totalLaps && !_raceFinished)
         {
-            Debug.Log($"[Carrera] ¡{car.gameObject.name} terminó la carrera en posición {car.RacePosition}!");
-            // TODO: disparar evento de fin de carrera para la UI
+            _raceFinished = true;
+            Debug.Log($"[Carrera] ¡{car.gameObject.name} terminó primero la carrera!");
+            OnRaceFinished?.Invoke(car);
         }
     }
 
@@ -82,7 +83,6 @@ public sealed class RaceManager : MonoBehaviour
         if (_sortedPositions.Count == 0)
             return;
 
-        // Ordena descendente: mayor puntaje = más adelante en carrera
         _sortedPositions.Sort((a, b) => b.RaceScore.CompareTo(a.RaceScore));
 
         for (int i = 0; i < _sortedPositions.Count; i++)
