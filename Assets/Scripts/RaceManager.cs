@@ -20,6 +20,9 @@ public sealed class RaceManager : MonoBehaviour
     public int TotalLaps => totalLaps;
     public int WaypointCount => waypoints != null ? waypoints.Length : 0;
 
+    /// <summary>Número total de coches registrados en la carrera.</summary>
+    public int RegisteredCarCount => _registeredCars.Count;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,7 +33,6 @@ public sealed class RaceManager : MonoBehaviour
 
         Instance = this;
 
-        // Asigna el índice a cada waypoint según su posición en el array
         for (int i = 0; i < waypoints.Length; i++)
         {
             if (waypoints[i] != null)
@@ -43,9 +45,6 @@ public sealed class RaceManager : MonoBehaviour
         UpdateRacePositions();
     }
 
-    /// <summary>
-    /// Llamado por CarRaceProgress.Start() para unirse a la carrera.
-    /// </summary>
     public void RegisterCar(CarRaceProgress car)
     {
         if (_registeredCars.Contains(car))
@@ -55,17 +54,12 @@ public sealed class RaceManager : MonoBehaviour
         _sortedPositions.Add(car);
     }
 
-    /// <summary>Retorna el waypoint en el índice indicado (circular).</summary>
     public RacingWaypoint GetWaypoint(int index)
         => waypoints[index % waypoints.Length];
 
-    /// <summary>Retorna el waypoint inmediatamente después del índice dado (circular).</summary>
     public RacingWaypoint GetNextWaypoint(int currentIndex)
         => waypoints[(currentIndex + 1) % waypoints.Length];
 
-    /// <summary>
-    /// Llamado por CarRaceProgress cada vez que un auto completa una vuelta.
-    /// </summary>
     public void OnCarCompletedLap(CarRaceProgress car)
     {
         Debug.Log($"[Carrera] {car.gameObject.name} — Vuelta {car.LapsCompleted}/{totalLaps} | Posición: {car.RacePosition}");
@@ -82,7 +76,6 @@ public sealed class RaceManager : MonoBehaviour
         if (_sortedPositions.Count == 0)
             return;
 
-        // Ordena descendente: mayor puntaje = más adelante en carrera
         _sortedPositions.Sort((a, b) => b.RaceScore.CompareTo(a.RaceScore));
 
         for (int i = 0; i < _sortedPositions.Count; i++)
