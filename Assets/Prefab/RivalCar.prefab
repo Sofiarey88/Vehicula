@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223985506722679901, guid: 76f01fc7f9bf84e41a55198e3edb955e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 32a51bf8e96bda74a97b2c96a5829059, type: 2}
+    - target: {fileID: 7223985506722679901, guid: 76f01fc7f9bf84e41a55198e3edb955e, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 32a51bf8e96bda74a97b2c96a5829059, type: 2}
     - target: {fileID: 7261279051956019202, guid: 76f01fc7f9bf84e41a55198e3edb955e, type: 3}
       propertyPath: m_Name
       value: RivalCar
