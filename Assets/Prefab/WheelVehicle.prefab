@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 884385331379098815}
   - component: {fileID: 7404282631928707791}
   - component: {fileID: 6875942489120094525}
+  - component: {fileID: -8132745827787411584}
   m_Layer: 0
   m_Name: WheelVehicle
   m_TagString: Untagged
@@ -815,16 +816,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
-    m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
-    m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6875942489120094525}
@@ -928,9 +921,26 @@ MonoBehaviour:
     canSteer: 0
     canDrive: 1
   centerOfMass: {fileID: 4629036039631747664}
-  motorTorque: 5000
-  maximumSteeringAngle: 30
+  motorTorque: 3000
+  maximumSteeringAngle: 45
   brakeTorque: 2500
+  brakeScaleReferenceSpeedKmh: 40
+  engineBrakeTorque: 0
+  brakeSpeedThreshold: 0.5
+  maxSpeedKmh: 120
+  maxReverseSpeedKmh: 40
+--- !u!114 &-8132745827787411584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261279051956019202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454cf13c4e6c07242a8332d1ee4a9483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarRaceProgress
 --- !u!1 &7431427689113878368
 GameObject:
   m_ObjectHideFlags: 0

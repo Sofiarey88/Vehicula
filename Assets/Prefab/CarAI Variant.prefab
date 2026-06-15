@@ -121,22 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84127de94d31ca044aba8de13fadfc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RivalCarAI
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   speed: 20
   turnSpeed: 5
   waypointDistance: 5
