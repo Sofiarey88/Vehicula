@@ -19,6 +19,10 @@ public sealed class RaceManager : MonoBehaviour
     private readonly List<CarRaceProgress> _sortedPositions = new();
     private bool _raceFinished = false;
 
+    // Distancia (horizontal, XZ) entre cada waypoint y el siguiente en el recorrido.
+    // _segmentLengths[i] = distancia entre waypoints[i] y waypoints[(i+1) % length]
+    private float[] _segmentLengths;
+
     public int TotalLaps => totalLaps;
     public int WaypointCount => waypoints != null ? waypoints.Length : 0;
     public int RegisteredCarCount => _registeredCars.Count;
@@ -44,6 +48,39 @@ public sealed class RaceManager : MonoBehaviour
             if (waypoints[i] != null)
                 waypoints[i].SetIndex(i);
         }
+
+        CalculateSegmentLengths();
+    }
+
+    private void CalculateSegmentLengths()
+    {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            _segmentLengths = new float[0];
+            return;
+        }
+
+        _segmentLengths = new float[waypoints.Length];
+
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            int next = (i + 1) % waypoints.Length;
+
+            if (waypoints[i] == null || waypoints[next] == null)
+            {
+                _segmentLengths[i] = 0f;
+                continue;
+            }
+
+            Vector3 a = waypoints[i].transform.position;
+            Vector3 b = waypoints[next].transform.position;
+
+            // Distancia horizontal (XZ), ignorando desniveles del terreno.
+            a.y = 0f;
+            b.y = 0f;
+
+            _segmentLengths[i] = Vector3.Distance(a, b);
+        }
     }
 
     private void Update()
@@ -65,6 +102,18 @@ public sealed class RaceManager : MonoBehaviour
 
     public RacingWaypoint GetNextWaypoint(int currentIndex)
         => waypoints[(currentIndex + 1) % waypoints.Length];
+
+    /// <summary>
+    /// Distancia (horizontal, XZ) entre el waypoint "fromIndex" y el siguiente en el recorrido.
+    /// Usado por CarRaceProgress para calcular el progreso fraccional dentro del segmento.
+    /// </summary>
+    public float GetSegmentLength(int fromIndex)
+    {
+        if (_segmentLengths == null || _segmentLengths.Length == 0)
+            return 0f;
+
+        return _segmentLengths[((fromIndex % _segmentLengths.Length) + _segmentLengths.Length) % _segmentLengths.Length];
+    }
 
     public void OnCarCompletedLap(CarRaceProgress car)
     {

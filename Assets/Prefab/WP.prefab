@@ -67,5 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RacingWaypoint
   targetSpeedKmh: 80
-  detectionRadius: 10
+  detectionRadius: 15
   waypointIndex: 0
