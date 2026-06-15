@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 2149321875205479812}
   - component: {fileID: 286202645088684159}
   - component: {fileID: 1188470750363668783}
+  - component: {fileID: 258827462874012291}
   m_Layer: 0
   m_Name: WheelVehicle
   m_TagString: Untagged
@@ -940,14 +941,27 @@ MonoBehaviour:
     canSteer: 0
     canDrive: 1
   centerOfMass: {fileID: 1677991762944351488}
-  motorTorque: 600
+  motorTorque: 2500
   maximumSteeringAngle: 30
   brakeTorque: 2500
   brakeScaleReferenceSpeedKmh: 40
   engineBrakeTorque: 100
   brakeSpeedThreshold: 0.5
-  maxSpeedKmh: 120
+  maxSpeedKmh: 100
   maxReverseSpeedKmh: 40
+--- !u!114 &258827462874012291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987034469424726687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454cf13c4e6c07242a8332d1ee4a9483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarRaceProgress
+  debugMode: 1
 --- !u!1 &7993825578016055497
 GameObject:
   m_ObjectHideFlags: 0
